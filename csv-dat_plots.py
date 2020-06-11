@@ -361,6 +361,9 @@ class App(wx.Frame):
                             ax.xaxis.set_major_formatter(ptick.ScalarFormatter(useMathText=True))
                             ax.xaxis.offsetText.set_fontsize(12)
                             ax.ticklabel_format(style='sci',axis='x',scilimits=(0,0))
+                            
+                        if checkbox_7.GetValue():
+                            ax.set_yscale('log')
                         
                         if checkbox_1.GetValue(): #チェックボックス選択時に原点を端に固定する
                             left, right = ax.get_xlim() #グラフの範囲の取得
@@ -763,6 +766,7 @@ class App(wx.Frame):
         checkbox_4 = wx.CheckBox(p, wx.ID_ANY,'x軸を指数表記')
         checkbox_5 = wx.CheckBox(p, wx.ID_ANY,'y軸を指数表記')
         checkbox_6 = wx.CheckBox(p, wx.ID_ANY,'FWHM')
+        checkbox_7 = wx.CheckBox(p, wx.ID_ANY,'y軸対数グラフ')
         
         checkbox_4.SetValue(True)
         checkbox_5.SetValue(True)
@@ -827,6 +831,7 @@ class App(wx.Frame):
         sizer2.Add(checkbox_3, flag =wx.GROW| wx.LEFT|wx.TOP, border=10)
         sizer2.Add(checkbox_4, flag =wx.GROW| wx.LEFT|wx.TOP, border=10)
         sizer2.Add(checkbox_5, flag =wx.GROW| wx.LEFT|wx.TOP, border=10)
+        sizer2.Add(checkbox_7, flag =wx.GROW| wx.LEFT|wx.TOP, border=10)
         
         sizer_txy.Add(s_text_t, flag=wx.EXPAND | wx.ALL, border=10)
         sizer_txy.Add(text_1, flag=wx.EXPAND | wx.ALL, border=10)
